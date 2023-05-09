@@ -1,23 +1,22 @@
 package com.metropolitan.it355pz.service;
 
-import com.metropolitan.it355pz.entity.User;
+
+import com.metropolitan.it355pz.entity.CreditCard;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserService {
-    List<User> findAll();
-
-    Optional<User> findByUsername(String username);
+public interface CreditCardService {
+    List<CreditCard> findAll();
 
 //    Optional<Author> findByAuthorName(String authorName);
 //    List<Author> findByAuthorNameContainingIgnoreCase(String str);
 //    Integer countByAuthorNameEndingWith(String name);
 
-    Optional<User> findById(Integer id);
+    Optional<CreditCard> findById(Integer id);
 
-    User save(User user);
+    CreditCard save(CreditCard creditCard);
 
-    User update(User user);
+    CreditCard update(CreditCard creditCard);
 
     void deleteById(Integer id);
 }
