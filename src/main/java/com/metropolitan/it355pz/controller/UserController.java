@@ -32,11 +32,11 @@ public class UserController {
         );
     }
 
-//    @GetMapping("/name")
-//    public ResponseEntity<Optional<Author>> findByAuthorName(@RequestParam String name){
-//        return ResponseEntity.ok(authorService.findByAuthorName(name));
-//    }
-//
+    @GetMapping("/username")
+    public ResponseEntity<Optional<User>> findByUsername(@RequestParam String username){
+        return ResponseEntity.ok(userService.findByUsername(username));
+    }
+
 //    @GetMapping("/name2")
 //    public ResponseEntity<List<Author>> findByAuthorNameContainingIgnoreCase(@RequestParam String name){
 //        return ResponseEntity.ok(authorService.findByAuthorNameContainingIgnoreCase(name));
