@@ -14,6 +14,8 @@ public interface CreditCardService {
 
     Optional<CreditCard> findById(Integer id);
 
+    Optional<CreditCard> findByCardNumber(String cardNumber);
+
     CreditCard save(CreditCard creditCard);
 
     CreditCard update(CreditCard creditCard);

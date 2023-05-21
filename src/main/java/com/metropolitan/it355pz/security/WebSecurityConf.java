@@ -3,6 +3,7 @@ package com.metropolitan.it355pz.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,16 +38,25 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/products/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/categories/**").hasRole("ADMIN")
-                .antMatchers("/").permitAll()
-                .and()
-                .httpBasic();
-//                .formLogin()
-//                .defaultSuccessUrl("/products")
+        http.csrf().disable().authorizeRequests()
+                .antMatchers("/book").hasRole("USER")
+                .antMatchers("/book/title").hasRole("USER")
+                .antMatchers("/book/languageAndNumOfPages").hasRole("USER")
+                .antMatchers("/book/numOfPages").hasRole("USER")
+                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST).hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET).hasRole("ADMIN")
+                .antMatchers("/").permitAll();
 //                .and()
-//                .rememberMe();
+////                .httpBasic();
+//                .formLogin()
+//                .defaultSuccessUrl("/book")
+//                .and()
+//                .rememberMe()
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/");
     }
 
 }

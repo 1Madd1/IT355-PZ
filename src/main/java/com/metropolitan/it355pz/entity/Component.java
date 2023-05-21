@@ -29,9 +29,6 @@ public class Component {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "type", nullable = false, length = 30)
-    private String type;
-
     @Lob
     @Column(name = "description", nullable = false)
     private String description;
