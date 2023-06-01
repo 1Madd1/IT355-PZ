@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
@@ -36,20 +38,22 @@ public class WebSecurityConf extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authProvider());
     }
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/book").hasRole("USER")
-                .antMatchers("/book/title").hasRole("USER")
-                .antMatchers("/book/languageAndNumOfPages").hasRole("USER")
-                .antMatchers("/book/numOfPages").hasRole("USER")
-                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST).hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET).hasRole("ADMIN")
-                .antMatchers("/").permitAll();
-//                .and()
-////                .httpBasic();
+//                .antMatchers("/book").hasRole("USER")
+//                .antMatchers("/book/title").hasRole("USER")
+//                .antMatchers("/book/languageAndNumOfPages").hasRole("USER")
+//                .antMatchers("/book/numOfPages").hasRole("USER")
+                .antMatchers(HttpMethod.DELETE).hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.PUT).hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.POST).hasAnyRole("ADMIN", "USER")
+                .antMatchers(HttpMethod.GET).hasAnyRole("ADMIN", "USER")
+                .antMatchers("/").permitAll()
+                .and()
+                .httpBasic();
 //                .formLogin()
 //                .defaultSuccessUrl("/book")
 //                .and()
