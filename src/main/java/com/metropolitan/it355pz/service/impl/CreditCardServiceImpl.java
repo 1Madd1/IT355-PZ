@@ -20,13 +20,21 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     @Override
-    public Optional<CreditCard> findById(Integer id) {
-        return creditCardRepository.findById(id);
+    public CreditCard findById(Integer id) {
+        return creditCardRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Credit card doesn't exist!"));
     }
 
     @Override
-    public Optional<CreditCard> findByCardNumber(String cardNumber) {
-        return creditCardRepository.findByCardNumber(cardNumber);
+    public CreditCard findByCardNumber(String cardNumber) {
+        return creditCardRepository.findByCardNumber(cardNumber).orElseThrow(() ->
+                new RuntimeException("Credit card doesn't exist!"));
+    }
+
+    @Override
+    public CreditCard findByUserId(Integer id) {
+        return creditCardRepository.findByUserId(id).orElseThrow(() ->
+                new RuntimeException("Credit card by user id: " + id + " doesn't exist!"));
     }
 
     @Override

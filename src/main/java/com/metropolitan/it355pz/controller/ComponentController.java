@@ -2,9 +2,7 @@ package com.metropolitan.it355pz.controller;
 
 
 import com.metropolitan.it355pz.entity.Component;
-import com.metropolitan.it355pz.entity.Computer;
 import com.metropolitan.it355pz.service.ComponentService;
-import com.metropolitan.it355pz.service.ComputerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +29,11 @@ public class ComponentController {
         return ResponseEntity.ok(componentService.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Computer not found!"))
         );
+    }
+
+    @GetMapping("/findAllNonEmpty")
+    public ResponseEntity<List<Component>> getAllByQuantityGreaterThan() {
+        return ResponseEntity.ok(componentService.findAllByQuantityGreaterThan0());
     }
 
     @PostMapping

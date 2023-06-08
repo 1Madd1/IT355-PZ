@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface UserService {
     List<User> findAll();
 
-    Optional<User> findByUsername(String username);
+    User findByUsername(String username);
 
 //    Optional<Author> findByAuthorName(String authorName);
 //    List<Author> findByAuthorNameContainingIgnoreCase(String str);

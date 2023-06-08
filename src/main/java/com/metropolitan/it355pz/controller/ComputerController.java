@@ -1,6 +1,7 @@
 package com.metropolitan.it355pz.controller;
 
 
+import com.metropolitan.it355pz.entity.Component;
 import com.metropolitan.it355pz.entity.Computer;
 import com.metropolitan.it355pz.entity.User;
 import com.metropolitan.it355pz.service.ComputerService;
@@ -31,6 +32,11 @@ public class ComputerController {
         return ResponseEntity.ok(computerService.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Computer not found!"))
         );
+    }
+
+    @GetMapping("/findAllNonEmpty")
+    public ResponseEntity<List<Computer>> getAllByQuantityGreaterThan() {
+        return ResponseEntity.ok(computerService.findAllByQuantityGreaterThan0());
     }
 
     @PostMapping

@@ -1,11 +1,14 @@
 package com.metropolitan.it355pz.service;
 
+import com.metropolitan.it355pz.entity.Component;
 import com.metropolitan.it355pz.entity.Computer;
 import java.util.List;
 import java.util.Optional;
 
 public interface ComputerService {
     List<Computer> findAll();
+
+    List<Computer> findAllByQuantityGreaterThan0();
 
 //    Optional<Author> findByAuthorName(String authorName);
 //    List<Author> findByAuthorNameContainingIgnoreCase(String str);

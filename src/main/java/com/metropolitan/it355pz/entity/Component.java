@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Table(name = "component")
 public class Component {
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     private Integer id;
 

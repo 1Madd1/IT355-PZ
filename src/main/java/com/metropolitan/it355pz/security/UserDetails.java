@@ -1,6 +1,7 @@
 package com.metropolitan.it355pz.security;
 
 
+
 import com.metropolitan.it355pz.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

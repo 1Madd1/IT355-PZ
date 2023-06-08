@@ -1,7 +1,6 @@
 package com.metropolitan.it355pz.service;
 
 
-import com.metropolitan.it355pz.entity.CreditCard;
 import com.metropolitan.it355pz.entity.PurchaseHistory;
 
 import java.util.List;

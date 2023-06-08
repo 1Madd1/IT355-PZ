@@ -6,14 +6,12 @@ import com.metropolitan.it355pz.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
@@ -33,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/username")
-    public ResponseEntity<Optional<User>> findByUsername(@RequestParam String username){
+    public ResponseEntity<User> findByUsername(@RequestParam String username){
         return ResponseEntity.ok(userService.findByUsername(username));
     }
 
@@ -48,13 +46,13 @@ public class UserController {
 //    }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody User author){
-        return ResponseEntity.ok(userService.save(author));
+    public ResponseEntity<User> save(@RequestBody User user){
+        return ResponseEntity.ok(userService.save(user));
     }
 
     @PutMapping
-    public ResponseEntity<User> update(@RequestBody User author){
-        return ResponseEntity.ok(userService.update(author));
+    public ResponseEntity<User> update(@RequestBody User user){
+        return ResponseEntity.ok(userService.save(user));
     }
 
     @DeleteMapping("/{id}")

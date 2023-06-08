@@ -10,4 +10,7 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
 //    List<Author> findByAuthorNameContainingIgnoreCase(String str);
 //    Integer countByAuthorNameEndingWith(String name);
     Optional<CreditCard> findByCardNumber(String cardNumber);
+
+    Optional<CreditCard> findByUserId(Integer id);
+
 }

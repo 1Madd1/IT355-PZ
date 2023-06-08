@@ -4,10 +4,7 @@ package com.metropolitan.it355pz.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
@@ -16,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "purchase_history")
 public class PurchaseHistory {
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     private Integer id;
 

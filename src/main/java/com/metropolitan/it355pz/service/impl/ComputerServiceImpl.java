@@ -20,6 +20,11 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
+    public List<Computer> findAllByQuantityGreaterThan0() {
+        return computerRepository.findAllByQuantityGreaterThan0();
+    }
+
+    @Override
     public Optional<Computer> findById(Integer id) {
         return computerRepository.findById(id);
     }

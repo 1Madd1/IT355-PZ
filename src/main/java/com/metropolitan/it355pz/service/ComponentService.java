@@ -7,6 +7,8 @@ import java.util.Optional;
 public interface ComponentService {
     List<Component> findAll();
 
+    List<Component> findAllByQuantityGreaterThan0();
+
 //    Optional<Author> findByAuthorName(String authorName);
 //    List<Author> findByAuthorNameContainingIgnoreCase(String str);
 //    Integer countByAuthorNameEndingWith(String name);

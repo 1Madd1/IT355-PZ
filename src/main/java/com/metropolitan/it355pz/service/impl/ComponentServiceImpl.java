@@ -20,6 +20,11 @@ public class ComponentServiceImpl implements ComponentService {
     }
 
     @Override
+    public List<Component> findAllByQuantityGreaterThan0() {
+        return componentRepository.findAllByQuantityGreaterThan0();
+    }
+
+    @Override
     public Optional<Component> findById(Integer id) {
         return componentRepository.findById(id);
     }

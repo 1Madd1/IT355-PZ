@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Table(name = "computer")
 public class Computer {
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     private Integer id;
 
