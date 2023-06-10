@@ -1,9 +1,9 @@
 package com.metropolitan.it355pz.controller;
 
-
-import com.metropolitan.it355pz.entity.Component;
+import com.metropolitan.it355pz.dto.PurchaseHistoryDTO;
 import com.metropolitan.it355pz.entity.PurchaseHistory;
 import com.metropolitan.it355pz.service.ComponentService;
+import com.metropolitan.it355pz.service.ComputerService;
 import com.metropolitan.it355pz.service.PurchaseHistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,12 @@ import java.util.List;
 public class PurchaseHistoryController {
 
     private final PurchaseHistoryService purchaseHistoryService;
+    private final ComputerService computerService;
+    private final ComponentService componentService;
 
     @GetMapping
     public ResponseEntity<List<PurchaseHistory>> getAll(){
+        //System.out.println(purchaseHistoryService.findAll());
         return ResponseEntity.ok(purchaseHistoryService.findAll());
     }
 
@@ -33,10 +36,34 @@ public class PurchaseHistoryController {
         );
     }
 
-    @PostMapping
-    public ResponseEntity<PurchaseHistory> save(@RequestBody PurchaseHistory purchaseHistory){
-        return ResponseEntity.ok(purchaseHistoryService.save(purchaseHistory));
+    @GetMapping("/userId")
+    public ResponseEntity<List<PurchaseHistory>> getByUserId(@RequestParam Integer userId) {
+        return ResponseEntity.ok(purchaseHistoryService.findAllByUserId(userId));
     }
+
+    @PostMapping
+    public ResponseEntity<PurchaseHistory> save(@RequestBody PurchaseHistoryDTO purchaseHistoryDTO){
+        System.out.println(purchaseHistoryDTO);
+        PurchaseHistory purchaseHistoryPom = new PurchaseHistory();
+        purchaseHistoryPom.setUserId(purchaseHistoryDTO.getUserId());
+        if(purchaseHistoryDTO.getComputerId() != null) {
+            purchaseHistoryPom.setComputer(computerService.findById(purchaseHistoryDTO.getComputerId()).get());
+        }
+        if(purchaseHistoryDTO.getComponentId() != null){
+            purchaseHistoryPom.setComponent(componentService.findById(purchaseHistoryDTO.getComponentId()).get());
+        }
+        purchaseHistoryPom.setQuantity(purchaseHistoryDTO.getQuantity());
+        purchaseHistoryPom.setPurchaseDate(purchaseHistoryDTO.getPurchaseDate());
+        purchaseHistoryPom.setTotalPrice(purchaseHistoryDTO.getTotalPrice());
+        System.out.println(purchaseHistoryPom);
+        return ResponseEntity.ok(purchaseHistoryService.save(purchaseHistoryPom));
+    }
+
+//    @PostMapping
+//    public ResponseEntity<PurchaseHistory> save(@RequestBody PurchaseHistory purchaseHistory){
+//        System.out.println(purchaseHistory);
+//        return ResponseEntity.ok(purchaseHistoryService.save(purchaseHistory));
+//    }
 
     @PutMapping
     public ResponseEntity<PurchaseHistory> update(@RequestBody PurchaseHistory purchaseHistory){
@@ -48,4 +75,5 @@ public class PurchaseHistoryController {
         purchaseHistoryService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
 }

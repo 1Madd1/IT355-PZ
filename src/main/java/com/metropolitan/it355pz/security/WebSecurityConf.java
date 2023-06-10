@@ -100,7 +100,9 @@ public class WebSecurityConf{
     }
 
     private static final String[] AUTH_WHITELIST = {
-            "/login_register/**", "/computer/**", "/computer", "/component/**", "/component", "/creditCard", "/creditCard/**"
+            "/login_register/**", "/computer/**", "/computer", "/component/**",
+            "/component", "/creditCard", "/creditCard/**", "/purchaseHistory",
+            "/purchaseHistory/**"
     };
 
     private static final String[] USER_WHITELIST = {

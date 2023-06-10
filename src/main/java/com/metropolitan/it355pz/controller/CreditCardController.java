@@ -24,18 +24,21 @@ public class CreditCardController {
 
     @GetMapping
     public ResponseEntity<List<CreditCard>> getAll(){
+        System.out.println("Alooooo");
         return ResponseEntity.ok(creditCardService.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<CreditCard> getById(@PathVariable Integer id) {
+        System.out.println("Aloooo");
+        System.out.println(id);
         return ResponseEntity.ok(creditCardService.findById(id));
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<CreditCard> getByUserId(@PathVariable String userId) {
+    @GetMapping("/userId")
+    public ResponseEntity<CreditCard> getByUserId(@RequestParam Integer userId) {
         System.out.println(userId);
-        return ResponseEntity.ok(creditCardService.findByUserId(Integer.parseInt(userId)));
+        return ResponseEntity.ok(creditCardService.findByUserId(userId));
     }
 
     @GetMapping("/cardNumber")
@@ -73,7 +76,6 @@ public class CreditCardController {
 
     @PutMapping
     public ResponseEntity<CreditCard> update(@RequestBody CreditCard creditCard){
-        System.out.println(creditCard);
         return ResponseEntity.ok(creditCardService.update(creditCard));
     }
 

@@ -1,38 +1,39 @@
 package com.metropolitan.it355pz.entity;
 
-
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "purchase_history")
 public class PurchaseHistory {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "userId", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    @Column(name = "componentId", nullable = false)
-    private Integer componentId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "component_id")
+    private Component component;
 
-    @Column(name = "computerId", nullable = false)
-    private Integer computerId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "computer_id")
+    private Computer computer;
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    @Column(name = "totalPrice", nullable = false)
+    @Column(name = "total_price", nullable = false)
     private Double totalPrice;
 
-    @Column(name = "purchaseDate", nullable = false)
-    private LocalDate purchaseDate;
+    @Lob
+    @Column(name = "purchase_date", nullable = false)
+    private String purchaseDate;
 
 }
