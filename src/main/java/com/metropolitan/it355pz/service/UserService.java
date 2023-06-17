@@ -9,6 +9,8 @@ public interface UserService {
 
     User findByUsername(String username);
 
+    User findByEmail(String email);
+
 //    Optional<Author> findByAuthorName(String authorName);
 //    List<Author> findByAuthorNameContainingIgnoreCase(String str);
 //    Integer countByAuthorNameEndingWith(String name);

@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
+    private static final long serialVersionUID = 1L;
     private final User user;
 
     public UserDetails(User user) {
@@ -49,5 +50,13 @@ public class UserDetails implements org.springframework.security.core.userdetail
     @Override
     public boolean isEnabled() {
         return user.getEnabled();
+    }
+
+    public Integer getId() {
+        return user.getId();
+    }
+
+    public String getEmail() {
+        return user.getEmail();
     }
 }

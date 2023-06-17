@@ -1,5 +1,6 @@
 package com.metropolitan.it355pz.security;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,18 @@ import java.util.Arrays;
 @Configuration
 @EnableWebMvc
 public class WebSecurityConf{
+
+//    private final UserDetailsService userDetailsService;
+//
+//    @Bean
+//    public DaoAuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//
+//        authProvider.setUserDetailsService(userDetailsService);
+//        authProvider.setPasswordEncoder(getPasswordEncoder());
+//
+//        return authProvider;
+//    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder(){
@@ -106,7 +119,9 @@ public class WebSecurityConf{
     };
 
     private static final String[] USER_WHITELIST = {
-            "/computer/**", "/computer", "/component/**", "/component"
+            "/computer/**", "/computer", "/component/**",
+            "/component", "/creditCard", "/creditCard/**", "/purchaseHistory",
+            "/purchaseHistory/**"
     };
 
 }
