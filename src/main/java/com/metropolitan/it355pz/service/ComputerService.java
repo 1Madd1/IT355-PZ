@@ -10,10 +10,6 @@ public interface ComputerService {
 
     List<Computer> findAllByQuantityGreaterThan0();
 
-//    Optional<Author> findByAuthorName(String authorName);
-//    List<Author> findByAuthorNameContainingIgnoreCase(String str);
-//    Integer countByAuthorNameEndingWith(String name);
-
     Optional<Computer> findById(Integer id);
 
     Computer save(Computer computer);

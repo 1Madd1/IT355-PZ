@@ -12,10 +12,6 @@ public interface PurchaseHistoryService {
 
     List<PurchaseHistory> findAllByUserId(Integer id);
 
-//    Optional<Author> findByAuthorName(String authorName);
-//    List<Author> findByAuthorNameContainingIgnoreCase(String str);
-//    Integer countByAuthorNameEndingWith(String name);
-
     Optional<PurchaseHistory> findById(Integer id);
 
     PurchaseHistory save(PurchaseHistory purchaseHistory);

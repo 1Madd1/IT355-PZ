@@ -3,11 +3,8 @@ package com.metropolitan.it355pz.controller;
 import com.metropolitan.it355pz.entity.User;
 import com.metropolitan.it355pz.dto.UserLoginDTO;
 import com.metropolitan.it355pz.dto.UserRegisterDTO;
-import com.metropolitan.it355pz.response.UserInfoResponse;
-import com.metropolitan.it355pz.security.UserDetails;
 import com.metropolitan.it355pz.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,9 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/login_register")

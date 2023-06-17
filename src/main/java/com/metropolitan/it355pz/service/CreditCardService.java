@@ -9,10 +9,6 @@ import java.util.Optional;
 public interface CreditCardService {
     List<CreditCard> findAll();
 
-//    Optional<Author> findByAuthorName(String authorName);
-//    List<Author> findByAuthorNameContainingIgnoreCase(String str);
-//    Integer countByAuthorNameEndingWith(String name);
-
     CreditCard findById(Integer id);
 
     CreditCard findByCardNumber(String cardNumber);

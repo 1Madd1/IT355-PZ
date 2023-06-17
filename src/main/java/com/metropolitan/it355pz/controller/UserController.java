@@ -35,16 +35,6 @@ public class UserController {
         return ResponseEntity.ok(userService.findByUsername(username));
     }
 
-//    @GetMapping("/name2")
-//    public ResponseEntity<List<Author>> findByAuthorNameContainingIgnoreCase(@RequestParam String name){
-//        return ResponseEntity.ok(authorService.findByAuthorNameContainingIgnoreCase(name));
-//    }
-//
-//    @GetMapping("/count")
-//    public ResponseEntity<Integer> countByAuthorNameEndingWith(@RequestParam String name){
-//        return ResponseEntity.ok(authorService.countByAuthorNameEndingWith(name));
-//    }
-
     @PostMapping
     public ResponseEntity<User> save(@RequestBody User user){
         return ResponseEntity.ok(userService.save(user));

@@ -1,7 +1,5 @@
 package com.metropolitan.it355pz.security;
 
-
-
 import com.metropolitan.it355pz.entity.User;
 import com.metropolitan.it355pz.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

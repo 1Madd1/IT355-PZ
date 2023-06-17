@@ -11,10 +11,6 @@ public interface UserService {
 
     User findByEmail(String email);
 
-//    Optional<Author> findByAuthorName(String authorName);
-//    List<Author> findByAuthorNameContainingIgnoreCase(String str);
-//    Integer countByAuthorNameEndingWith(String name);
-
     Optional<User> findById(Integer id);
 
     User save(User user);

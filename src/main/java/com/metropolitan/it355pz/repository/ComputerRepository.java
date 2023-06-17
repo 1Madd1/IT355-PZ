@@ -9,10 +9,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ComputerRepository extends JpaRepository<Computer, Integer> {
-//    Optional<Author> findByAuthorName(String authorName);
-//    List<Author> findByAuthorNameContainingIgnoreCase(String str);
-//    Integer countByAuthorNameEndingWith(String name);
-
     @Query("SELECT c FROM Computer c WHERE c.quantity > 0")
     List<Computer> findAllByQuantityGreaterThan0();
 }

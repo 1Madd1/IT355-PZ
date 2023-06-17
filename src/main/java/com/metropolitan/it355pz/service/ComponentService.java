@@ -9,10 +9,6 @@ public interface ComponentService {
 
     List<Component> findAllByQuantityGreaterThan0();
 
-//    Optional<Author> findByAuthorName(String authorName);
-//    List<Author> findByAuthorNameContainingIgnoreCase(String str);
-//    Integer countByAuthorNameEndingWith(String name);
-
     Optional<Component> findById(Integer id);
 
     Component save(Component component);
